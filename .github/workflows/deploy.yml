@@ -47,3 +47,15 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/keepalive-frontend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.SERVER_IP }}
+            username: ${{ secrets.SERVER_USER }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            script: |
+              cd /app/keepalive
+              docker compose pull backend
+              docker compose up -d --force-recreate backend
+
