@@ -6,7 +6,6 @@ on:
       - main
 
 jobs:
-
   build-and-push:
     runs-on: ubuntu-latest
 
@@ -23,7 +22,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 3. Build & Push Backend
+      # Build & Push Backend
       - name: Build and Push Backend Image
         uses: docker/build-push-action@v5
         with:
@@ -34,7 +33,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # 4. Build & Push Frontend
+      # Build & Push Frontend
       - name: Build and Push Frontend Image
         uses: docker/build-push-action@v5
         with:
@@ -48,14 +47,14 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@master
         with:
-            host: ${{ secrets.SERVER_IP }}
-            username: ${{ secrets.SERVER_USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            script: |
-              cd /app/keepalive
-              docker compose pull backend
-              docker compose up -d --force-recreate backend
-
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /app/keepalive
+            docker compose pull
+            docker compose up -d --force-recreate
