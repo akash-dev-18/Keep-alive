@@ -1,5 +1,4 @@
 spring:
-
   datasource:
     url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/uptime_monitor}
     username: ${DATASOURCE_USERNAME}
@@ -24,17 +23,17 @@ spring:
       enabled: true
 
 clerk:
-  jwks-uri: ${CLERK_JWKS_URI:}
-  issuer: ${CLERK_ISSUER:}
-  webhook-secret: ${CLERK_WEBHOOK_SECRET:}
+  jwks-uri: ${CLERK_JWKS_URI}
+  issuer: ${CLERK_ISSUER}
+  webhook-secret: ${CLERK_WEBHOOK_SECRET}
 
 resend:
-  api-key: ${RESEND_API_KEY:}
-  from-email: ${RESEND_FROM_EMAIL:}
+  api-key: ${RESEND_API_KEY}
+  from-email: ${RESEND_FROM_EMAIL}
 
 stripe:
   webhook:
-    secret: ${STRIPE_WEBHOOK_SECRET:}
+    secret: ${STRIPE_WEBHOOK_SECRET}
 
 keepalive:
-  encryption-secret: ${KEEPALIVE_ENCRYPTION_SECRET:}
+  encryption-secret: ${KEEPALIVE_ENCRYPTION_SECRET}
