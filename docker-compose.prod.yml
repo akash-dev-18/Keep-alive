@@ -1,0 +1,32 @@
+services:
+
+  backend:
+    build:
+      context: ./keepalive
+    container_name: uptime-backend
+    env_file: ./keepalive/.env
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/uptime_monitor
+      DATASOURCE_USERNAME: postgres
+      DATASOURCE_PASSWORD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: uptime-frontend
+    env_file: ./frontend/.env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped

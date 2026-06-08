@@ -1,0 +1,31 @@
+# Backend gitignore
+
+# Maven / Java build outputs
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.gradle/
+build/
+dist/
+*.class
+*.jar
+*.war
+*.ear
+
+# Backend environment files
+.env
+.env.*
+*.env
+*.env.*
+
+# IDE project metadata sometimes generated inside backend
+.classpath
+.factorypath
+.project
+.settings/
+.apt_generated/
+.springBeans
+.sts4-cache/
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/

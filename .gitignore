@@ -1,0 +1,48 @@
+# KeepAlive root gitignore
+
+# Local planning notes
+details.md
+**/details.md
+
+# Agent / AI assistant metadata
+.agent/
+.agents/
+.claude/
+AGENTS.md
+**/AGENTS.md
+
+# Secrets and environment files
+.env
+.env.*
+*.env
+*.env.*
+credentials
+credentials.*
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+
+# Logs and runtime files
+*.log
+logs/
+tmp/
+temp/
+
+# IDE and editor files
+.idea/
+**/.idea/
+.vscode/
+**/.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
