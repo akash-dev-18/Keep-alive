@@ -24,9 +24,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class MonitorService {
 
-    private static final int FREE_MONITOR_LIMIT = 3;
+    private static final int FREE_MONITOR_LIMIT = 10;
     private static final int PRO_MONITOR_LIMIT = 50;
-    private static final int FREE_MIN_INTERVAL = 2;
+    private static final int FREE_MIN_INTERVAL = 1;
     private static final int PRO_MIN_INTERVAL = 1;
 
     private final MonitorRepository monitorRepository;

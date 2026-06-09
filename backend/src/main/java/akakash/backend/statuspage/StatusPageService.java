@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class StatusPageService {
 
-    private static final int FREE_STATUS_PAGE_LIMIT = 1;
+    private static final int FREE_STATUS_PAGE_LIMIT = 10;
     private static final int PRO_STATUS_PAGE_LIMIT = 10;
 
     private final StatusPageRepository statusPageRepository;
