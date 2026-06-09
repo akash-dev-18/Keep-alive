@@ -304,18 +304,18 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.35, delay: idx * 0.04 }}
-                whileHover={{ 
-                  y: -3, 
+                whileHover={{
+                  y: -3,
                   transition: { duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }
                 }}
-                whileTap={{ 
-                  scale: 0.97, 
+                whileTap={{
+                  scale: 0.97,
                   y: 0,
                   transition: { duration: 0.1 }
                 }}
                 className="premium-card p-5 group hover:border-blue-500/30 hover:shadow-[0_0_40px_rgba(59,130,246,0.1)] transition-all duration-300"
 >
-                <motion.div 
+                <motion.div
                   className="flex h-8 w-8 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900/60"
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.1 }}
@@ -339,23 +339,71 @@ export default function HomePage() {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.4 }}
               >
-                <span className="section-kicker">Workflow</span>
+                <span className="text-[11px] font-medium uppercase tracking-widest text-blue-400">
+                  Workflow
+                </span>
                 <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                   From failure to resolution
                 </h2>
                 <p className="mt-2 text-sm text-zinc-500 sm:text-base">
-                  A failed check becomes an incident. Incidents trigger notifications. 
+                  A failed check becomes an incident. Incidents trigger notifications.
                   Recovery closes the loop. Every step leaves a record.
                 </p>
               </motion.div>
 
-              <div className="relative grid gap-4">
-  <div className="absolute left-5 top-10 bottom-10 w-px bg-zinc-800" />
+              <div className="relative flex flex-col gap-0">
+                {/* Connecting line */}
+                <div className="absolute left-[19px] top-5 bottom-5 w-px bg-gradient-to-b from-blue-500/30 via-blue-500/20 to-blue-500/10" />
+
                 {[
-                  { step: '01', title: 'Add a monitor', desc: 'Add an HTTP endpoint, SSL certificate, or cron heartbeat with the expected check interval.' },
-                  { step: '02', title: 'Checks run automatically', desc: 'Our workers evaluate each monitor on schedule and record every result immutably.' },
-                  { step: '03', title: 'Get alerted', desc: 'A failure opens an incident, sends a notification, and updates your dashboard in real time.' },
-                  { step: '04', title: 'Review & Resolve', desc: 'Close the incident when the service recovers. The full timeline is saved for postmortem analysis.' },
+                  {
+                    step: '01',
+                    title: 'Add a monitor',
+                    badge: 'Setup',
+                    badgeClass: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+                    icon: (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a9 9 0 100 18A9 9 0 0012 3zm0 0v2m0 14v2M3 12h2m14 0h2" />
+                      </svg>
+                    ),
+                    desc: 'Add an HTTP endpoint, SSL certificate, or cron heartbeat with the expected check interval.',
+                  },
+                  {
+                    step: '02',
+                    title: 'Checks run automatically',
+                    badge: 'Automated',
+                    badgeClass: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+                    icon: (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
+                      </svg>
+                    ),
+                    desc: 'Our workers evaluate each monitor on schedule and record every result immutably.',
+                  },
+                  {
+                    step: '03',
+                    title: 'Get alerted',
+                    badge: 'Alert',
+                    badgeClass: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+                    icon: (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                      </svg>
+                    ),
+                    desc: 'A failure opens an incident, sends a notification, and updates your dashboard in real time.',
+                  },
+                  {
+                    step: '04',
+                    title: 'Review & resolve',
+                    badge: 'Resolved',
+                    badgeClass: 'bg-green-500/10 text-green-400 border-green-500/20',
+                    icon: (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    ),
+                    desc: 'Close the incident when the service recovers. The full timeline is saved for postmortem analysis.',
+                  },
                 ].map((item, i) => (
                   <motion.div
                     key={item.step}
@@ -363,22 +411,28 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-40px' }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}
-                    whileHover={{ 
-                      x: 4, 
-                      transition: { duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }
-                    }}
-                    whileTap={{ 
-                      scale: 0.98,
-                      transition: { duration: 0.1 }
-                    }}
-                    className="premium-card flex gap-4 p-5 hover:border-blue-500/20 transition-all duration-300"
->
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-xs font-bold text-blue-400">
+                    whileHover={{ x: 4, transition: { duration: 0.15 } }}
+                    className="group relative z-10 flex gap-4 rounded-xl px-4 py-3.5 transition-colors duration-200 hover:bg-white/[0.03]"
+                  >
+                    {/* Step number bubble */}
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-zinc-700/60 bg-zinc-900 text-[11px] font-semibold text-zinc-400 transition-all duration-200 group-hover:border-blue-500/40 group-hover:bg-blue-500/10 group-hover:text-blue-400">
                       {item.step}
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="text-base font-semibold text-white">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-6 text-zinc-400">{item.desc}</p>
+                    </div>
+
+                    {/* Content */}
+                    <div className="min-w-0 flex-1 pt-0.5">
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                        <span className={`rounded-full border px-2 py-0.5 text-[10px] font-medium ${item.badgeClass}`}>
+                          {item.badge}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm leading-6 text-zinc-500">{item.desc}</p>
+                    </div>
+
+                    {/* Icon */}
+                    <div className="shrink-0 pt-1 text-zinc-700 transition-colors duration-200 group-hover:text-zinc-500">
+                      {item.icon}
                     </div>
                   </motion.div>
                 ))}
@@ -411,32 +465,35 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: 0.05 }}
-                whileHover={{ 
-                  y: -3, 
+                whileHover={{
+                  y: -3,
                   transition: { duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }
                 }}
-                whileTap={{ 
-                  scale: 0.97, 
+                whileTap={{
+                  scale: 0.97,
                   y: 0,
                   transition: { duration: 0.1 }
                 }}
                 className="premium-card p-5"
               >
+              <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded-bl-lg tracking-wider">
+                                PRO
+                              </div>
                 <h3 className="text-base font-semibold text-zinc-200">Free</h3>
-                <p className="mt-1 text-sm text-zinc-500">For side projects.</p>
+                <p className="mt-1 text-sm text-zinc-500">For indie developers.</p>
                 <p className="mt-4 text-3xl font-bold text-white">$0</p>
                 <ul className="mt-4 space-y-2.5 text-sm">
                   <li className="flex items-center gap-2.5">
                     <CheckCircle className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                    <span className="text-zinc-400">3 monitors</span>
+                    <span className="text-zinc-400">10 monitors</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                    <span className="text-zinc-400">2-minute intervals</span>
+                    <span className="text-zinc-400">1-minute intervals</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                    <span className="text-zinc-400">1 status page</span>
+                    <span className="text-zinc-400">10 status page</span>
                   </li>
                 </ul>
               </motion.div>
@@ -449,15 +506,15 @@ export default function HomePage() {
                 className="rounded-xl border border-blue-500/30 bg-zinc-900/60 p-5 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded-bl-lg tracking-wider">
-                  Early Access
+                  PRO
                 </div>
                 <h3 className="text-base font-semibold text-zinc-200">Pro</h3>
                 <p className="mt-1 text-sm text-zinc-500">For production teams.</p>
-                <p className="mt-4 text-3xl font-bold text-white">$3<span className="text-base font-normal text-zinc-500">/mo</span></p>
+                <p className="mt-4 text-3xl font-bold text-white">$0<span className="text-base font-normal text-zinc-500">/mo</span></p>
                 <ul className="mt-4 space-y-2.5 text-sm">
                   <li className="flex items-center gap-2.5">
                     <CheckCircle className="h-3.5 w-3.5 text-blue-400 shrink-0" />
-                    <span className="text-zinc-300">50 monitors</span>
+                    <span className="text-zinc-300">10 monitors</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle className="h-3.5 w-3.5 text-blue-400 shrink-0" />

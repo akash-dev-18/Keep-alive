@@ -26,16 +26,37 @@ export default function SettingsPage() {
     { id: 'security', label: 'Security', icon: Shield },
   ];
 
-  async function updatePref(key: keyof Pick<NotificationPreferences, 'emailOnDown' | 'emailOnUp' | 'emailOnSslExpiry'>, value: boolean) {
-    if (!prefs) return;
-    setSaving(true);
-    try {
-      const updated = await api.notificationPreferences.update({ [key]: value });
-      setPrefs(updated);
-    } catch (e) { console.error(e); }
-    finally { setSaving(false); }
-  }
+//   async function updatePref(key: keyof Pick<NotificationPreferences, 'emailOnDown' | 'emailOnUp' | 'emailOnSslExpiry'>, value: boolean) {
+//     if (!prefs) return;
+//     setSaving(true);
+//     try {
+//       const updated = await api.notificationPreferences.update({ [key]: value });
+//       setPrefs(updated);
+//     } catch (e) { console.error(e); }
+//     finally { setSaving(false); }
+//   }
 
+async function updatePref(
+  key: keyof Pick<NotificationPreferences, 'emailOnDown' | 'emailOnUp' | 'emailOnSslExpiry'>,
+  value: boolean
+) {
+  if (!prefs) return;
+
+  const previousValue = prefs[key];
+
+  setPrefs((prev) => (prev ? { ...prev, [key]: value } : null));
+  setSaving(true);
+
+  try {
+    const updated = await api.notificationPreferences.update({ [key]: value });
+    setPrefs(updated);
+  } catch (e) {
+    console.error(e);
+    setPrefs((prev) => (prev ? { ...prev, [key]: previousValue } : null));
+  } finally {
+    setSaving(false);
+  }
+}
   if (!userId) {
     return (
       <>

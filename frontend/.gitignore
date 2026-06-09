@@ -32,3 +32,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .pnpm-debug.log*
+
+# clerk configuration (can include secrets)
+/.clerk/
