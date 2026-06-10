@@ -43,7 +43,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/status/**").permitAll()
                         .requestMatchers("/api/webhooks/**").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers("/sitemap.xml").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
