@@ -132,7 +132,7 @@ Returns recent checks, incidents, and failures across all monitors.
 ![monitortype.png](images/monitortype.png)
 
 - **CHECK DASHBOARD**
-- 
+
 ![keepalivemonitor.png](images/keepalivemonitor.png)
 
 
